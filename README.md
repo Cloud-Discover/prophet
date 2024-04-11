@@ -275,6 +275,57 @@ prophet-cli -d -v report --package-file /tmp/hosts_collection_20211215202459.zip
 |VMware  |master02             |         |                        |00:50:56:9a:06:ad|CentOS 4/5/6/7                    |CentOS 4/5/6/7                    |64-bit|                     |efi |Intel(R) Xeon(R) CPU E5-2680 0 @ 2.70GHz |4    |               |4096.00 |        |1   |51200.00   |[10.3-4T-5] centos7.3_131/centos7.3_131.vmdk&#124;51200.00                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |                                                                                                                                 |1   |VM Network&#124;00:50:56:9a:06:ad                                                                                                                                                                                                                                                                                                                                                                                                                                               |VMware ESX Server|VMware ESXi 6.0.0 build-2715440|192.168.10.3         |
 |Physical|COMPUTER-PC          |         |192.168.10.62           |00:0c:29:9a:59:73|Microsoft Windows 7 旗舰版           |Microsoft Windows 7 旗舰版           |64-bit|6.1.7600             |bios|Intel(R) Xeon(R) CPU E5-2680 0 @ 2.70GHz |4    |Physical Memory|8191.55 |4.83    |2   |255996.72  |0&#124;51199.34&#124;VMware Virtual disk SCSI Disk Device&#124;VMware Virtual disk SCSI Disk Device 1&#124;204797.37&#124;VMware Virtual disk SCSI Disk Device&#124;VMware Virtual disk SCSI Disk Device                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |C:&#124;53580132352&#124;4455071744&#124;0.08&#124;NTFS D:&#124;109887614976&#124;109790175232&#124;1.0&#124;NTFS E:&#124;104857595904&#124;104760311808&#124;1.0&#124;NTFS                  |1   |[00000007] Intel(R) PRO/1000 MT Network Connection&#124;00:0c:29:9a:59:73&#124;192.168.10.1&#124;192.168.10.62&#124;255.255.255.0                                                                                                                                                                                                                                                                                                                                                              |                 |                               |                     |
 
+### (稳定)功能四：云平台产品单价采集
+
+#### 功能说明
+
+用户填入鉴权信息（AK/SK）后，进行公网对应云平台产品单价采集。采集完成后，将产品单价信息存储在对应json文件内。
+
+云平台支持情况：
+* 华为云中国站：huawei_cn
+* 华为云国际站：huawei_intl
+
+注意：
+* 华为云采集资源OpenAPI接口最多支持 10次/秒 调用
+
+
+```
+usage: prophet-cli price [-h] --cloud CLOUD --ak AK --sk SK --output-path
+                         OUTPUT_PATH
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --cloud CLOUD         Cloud platform acronyms
+  --ak AK               Cloud authentication access key id
+  --sk SK               Cloud authentication access key id
+  --output-path OUTPUT_PATH
+                        Generate report path
+
+```
+
+#### 示例：执行采集
+
+采集华为云国际站产品单价，并将json文件打包为zip存储在/tmp目录中。
+
+```
+prophet-cli price --cloud huawei_intl --ak xxx --sk yyy --output-path /tmp/
+```
+
+#### 采集结果说明
+
+采集目录结构
+
+```
+huawei_intl/
+│
+├── regions/ -> 云平台多个资源池产品单价信息
+│   ├── af-south-1.json -> 云平台资源池内产品单价信息
+│   └── cn-south-1.json
+│
+├── region.json -> 云平台资源池信息
+```
+
+另外在输出目录中会生成huawei_intl_xxxxxxx.zip文件（根据输入的云平台简称），该文件为最终用于分析的压缩文件。
 
 
 

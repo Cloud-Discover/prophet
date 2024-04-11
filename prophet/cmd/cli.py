@@ -18,6 +18,7 @@ import logging
 import os
 import sys
 
+from prophet.cloud_price.collector import PriceCollector
 from prophet.scanner.network import NetworkController
 from prophet.collector.collector import HostCollector
 from prophet.report.host_report import HostReporter
@@ -68,6 +69,17 @@ def analysis_report(args):
                                args.clean,
                                args.report_name)
     host_report.analysis()
+
+
+def collect_prices(args):
+    cloud = args.cloud
+    ak = args.ak
+    sk = args.sk
+    output_path = args.output_path
+
+    price_collector = PriceCollector(cloud, ak, sk, output_path)
+    price_collector.collect_prices()
+    price_collector.package()
 
 
 def parse_sys_args(argv):
@@ -130,6 +142,21 @@ def parse_sys_args(argv):
             help="Clean temp work dir or not, by default is not")
 
     parser_report.set_defaults(func=analysis_report)
+
+    # Collecting Unit Prices Of Cloud Platform Resources
+    parser_price = subparsers.add_parser("price")
+    parser_price.add_argument("--cloud",
+            dest="cloud", required=True,
+            help="Cloud platform acronyms")
+    parser_price.add_argument("--ak",
+            dest="ak", required=True,
+            help="Cloud authentication access key id")
+    parser_price.add_argument("--sk", dest="sk",
+            required=True, help="Cloud authentication access key id")
+    parser_price.add_argument("--output-path", dest="output_path",
+            required=True, help="Generate report path")
+
+    parser_price.set_defaults(func=collect_prices)
 
     if len(sys.argv) == 1:
         parser.print_help(sys.stderr)

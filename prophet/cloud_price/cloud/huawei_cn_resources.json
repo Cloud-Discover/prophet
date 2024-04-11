@@ -1,0 +1,287 @@
+{
+  "DEFAULT_REGION_ID": "cn-north-1",
+  "CURRENCY_UNIT": "RMB_amount",
+  "ON_DEMAND": "OnDemand",
+  "ON_PERIOD": "OnPeriod",
+  "ECS_PRODUCT": {
+    "ECS_SERVICE_TYPE_CODE": "hws.service.type.ec2",
+    "ECS_RESOURCE_TYPE_CODE": "hws.resource.type.vm",
+    "ECS_USAGE_FACTOR": "Duration",
+    "ECS_USAGE_VALUE": 1,
+    "ECS_USAGE_MEASURE_ID": 4,
+    "ECS_SUBSCRIPTION_NUM": 1,
+    "ECS_PERIOD_TYPE": 2,
+    "ECS_PERIOD_NUM": 1,
+    "ECS_USAGE_UNIT": "h",
+    "ECS_PERIOD_MONTH_UNIT": "month"
+  },
+  "EBS_PRODUCT": {
+    "EBS_SERVICE_TYPE_CODE": "hws.service.type.ebs",
+    "EBS_RESOURCE_TYPE_CODE": "hws.resource.type.volume",
+    "EBS_RESOURCE_SIZE": 10,
+    "EBS_SIZE_MEASURE_ID": 17,
+    "EBS_USAGE_FACTOR": "Duration",
+    "EBS_USAGE_VALUE": 1,
+    "EBS_USAGE_MEASURE_ID": 4,
+    "EBS_SUBSCRIPTION_NUM": 1,
+    "EBS_PERIOD_TYPE": 2,
+    "EBS_PERIOD_NUM": 1,
+    "EBS_RESOURCE_UNIT": "GB",
+    "EBS_PERIOD_MONTH_UNIT": "month"
+  },
+  "OBS_PRODUCT": {
+    "OBS_SERVICE_TYPE_CODE": "hws.service.type.obs",
+    "OBS_RESOURCE_TYPE_CODE": "hws.resource.type.obs",
+    "OBS_STORAGE_3AZ_RESOURCE_SPEC": "obs",
+    "OBS_STORAGE_AZ_RESOURCE_SPEC": "obs.001",
+    "OBS_STORAGE_3AZ_USAGE_FACTOR": "size_3az",
+    "OBS_STORAGE_AZ_USAGE_FACTOR": "size",
+    "OBS_PUBLIC_USAGE_FACTOR": "download.external",
+    "OBS_RETURN_USAGE_FACTOR": "download_crr",
+    "OBS_USAGE_VALUE": 10,
+    "OBS_STORAGE_3AZ_USAGE_MEASURE_ID": 17,
+    "OBS_STORAGE_USAGE_MEASURE_ID": 10,
+    "OBS_USAGE_MEASURE_ID": 10,
+    "OBS_SUBSCRIPTION_NUM": 1,
+    "OBS_USAGE_UNIT": "GB"
+  },
+  "EIP_PRODUCT": {
+    "EIP_SERVICE_TYPE_CODE": "hws.service.type.vpc",
+    "EIP_RESOURCE_TYPE_CODE": "hws.resource.type.bandwidth",
+    "EIP_RESOURCE_SPEC": "12_bgp",
+    "EIP_PERIOD_RESOURCE_SPEC": "19_bgp",
+    "EIP_RESOURCE_SIZE": 1,
+    "EIP_SIZE_MEASURE_ID": 15,
+    "EIP_USAGE_FACTOR": "upflow",
+    "EIP_USAGE_VALUE": 1,
+    "EIP_USAGE_MEASURE_ID": 10,
+    "EIP_SUBSCRIPTION_NUM": 1,
+    "EIP_PERIOD_TYPE": 2,
+    "EIP_PERIOD_NUM": 1,
+    "EIP_USAGE_UNIT": "GB",
+    "EIP_PERIOD_MONTH_UNIT": "month"
+  },
+  "BLACKLIST": {
+    "regions": [
+        "cn-east-201",
+        "cn-north-219"
+    ],
+    "flavors": [
+      "c6ne.",
+      "m3n.",
+      "t7.",
+      "c6h",
+      "ac7.",
+      "h2.",
+      "ir3.",
+      "g6v.",
+      "g6.",
+      "g5.",
+      "g3.",
+      "g1.",
+      "p2vs.",
+      "p2s.",
+      "p2v.",
+      "p1.",
+      "pi2.",
+      "pi1.",
+      "fp1.",
+      "fp1c.",
+      "fp1cne.",
+      "ai1s.",
+      "ai1.",
+      "kc1.",
+      "kc2.",
+      "km1.",
+      "ki1.",
+      "kai1s.",
+      "c7c.",
+      "c6c."
+    ]
+  },
+  "FLAVOR_PERFORMANCE_TYPE": [
+    {
+        "locales": {
+            "zh_CN": "通用计算型",
+            "en_US": "General computing"
+        },
+        "flavors": [
+            "s7",
+            "s7n",
+            "s6",
+            "sn3",
+            "s3",
+            "s2"
+        ]
+    },
+    {
+        "locales": {
+            "zh_CN": "通用计算增强型",
+            "en_US": "General computing-plus"
+        },
+        "flavors": [
+            "c7",
+            "c7t",
+            "ac7",
+            "c7n",
+            "c6s",
+            "c6h",
+            "c6",
+            "c3ne",
+            "c3"
+        ]
+    },
+    {
+        "locales": {
+            "zh_CN": "通用入门型",
+            "en_US": "General computing-basic"
+        },
+        "flavors": [
+            "t6"
+        ]
+    },
+    {
+        "locales": {
+            "zh_CN": "内存优化型",
+            "en_US": "Memory-optimized"
+        },
+        "flavors": [
+            "m7",
+            "am7",
+            "m7n",
+            "m6",
+            "m3ne",
+            "m3",
+            "m2"
+        ]
+    },
+    {
+        "locales": {
+            "zh_CN": "超大内存型",
+            "en_US": "Large-memory"
+        },
+        "flavors": [
+            "e7",
+            "e6",
+            "e3"
+        ]
+    },
+    {
+        "locales": {
+            "zh_CN": "磁盘增强型",
+            "en_US": "Disk-intensive"
+        },
+        "flavors": [
+            "d7",
+            "d6",
+            "d3",
+            "d2"
+        ]
+    },
+    {
+        "locales": {
+            "zh_CN": "超高I/O型",
+            "en_US": "Ultra-high I/O"
+        },
+        "flavors": [
+            "ir7",
+            "i7",
+            "ai7",
+            "ir7n",
+            "i7n",
+            "ir3",
+            "i3"
+        ]
+    },
+    {
+        "locales": {
+            "zh_CN": "高性能计算型",
+            "en_US": "High-performance computing"
+        },
+        "flavors": [
+            "h3",
+            "hc2"
+        ]
+    },
+    {
+        "locales": {
+            "zh_CN": "GPU加速型",
+            "en_US": "GPU-accelerated"
+        },
+        "flavors": [
+            "g6v",
+            "g6",
+            "g5",
+            "g3",
+            "g1",
+            "p2vs",
+            "p2s",
+            "p2v",
+            "p1",
+            "pi2",
+            "pi1"
+        ]
+    },
+    {
+        "locales": {
+            "zh_CN": "AI加速型",
+            "en_US": "AI-accelerated"
+        },
+        "flavors": [
+            "ai1s",
+            "ai1"
+        ]
+    }
+  ],
+  "DISK_TYPES": {
+    "SATA": {
+        "resource_spec": "SATA",
+        "locales": {
+            "zh_CN": "普通IO",
+            "en_US": "Common I/O"
+        }
+    },
+    "SAS": {
+        "resource_spec": "SAS",
+        "locales": {
+            "zh_CN": "高IO",
+            "en_US": "High I/O"
+        }
+    },
+    "GPSSD": {
+        "resource_spec": "GPSSD",
+        "locales": {
+            "zh_CN": "通用型SSD",
+            "en_US": "General Purpose SSD"
+        }
+    },
+    "SSD": {
+        "resource_spec": "SSD",
+        "locales": {
+            "zh_CN": "超高IO",
+            "en_US": "Ultra-high I/O"
+        }
+    },
+    "GPSSD2": {
+        "resource_spec": "GPSSD2.storage",
+        "locales": {
+            "zh_CN": "通用型SSD V2",
+            "en_US": "General Purpose SSD V2"
+        }
+    },
+    "ESSD": {
+        "resource_spec": "ESSD",
+        "locales": {
+            "zh_CN": "极速型SSD",
+            "en_US": "Extreme SSD"
+        }
+    },
+    "ESSD2": {
+        "resource_spec": "ESSD2",
+        "locales": {
+            "zh_CN": "极速型SSD V2",
+            "en_US": "Extreme SSD V2"
+        }
+    }
+  }
+}

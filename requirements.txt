@@ -10,3 +10,4 @@ requests==2.22.0
 humanfriendly==4.18
 openpyxl==2.6.4
 stevedore==3.5.0
+huaweicloudsdkall==3.0.90

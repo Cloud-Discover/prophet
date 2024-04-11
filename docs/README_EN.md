@@ -262,6 +262,59 @@ prophet-cli -d -v report --package-file /tmp/hosts_collection_20211215202459.zip
 |VMware  |master02             |         |                        |00:50:56:9a:06:ad|CentOS 4/5/6/7                    |CentOS 4/5/6/7                    |64-bit|                     |efi |Intel(R) Xeon(R) CPU E5-2680 0 @ 2.70GHz |4    |               |4096.00 |        |1   |51200.00   |[10.3-4T-5] centos7.3_131/centos7.3_131.vmdk&#124;51200.00                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |                                                                                                                                 |1   |VM Network&#124;00:50:56:9a:06:ad                                                                                                                                                                                                                                                                                                                                                                                                                                               |VMware ESX Server|VMware ESXi 6.0.0 build-2715440|192.168.10.3         |
 |Physical|COMPUTER-PC          |         |192.168.10.62           |00:0c:29:9a:59:73|Microsoft Windows 7 旗舰版           |Microsoft Windows 7 旗舰版           |64-bit|6.1.7600             |bios|Intel(R) Xeon(R) CPU E5-2680 0 @ 2.70GHz |4    |Physical Memory|8191.55 |4.83    |2   |255996.72  |0&#124;51199.34&#124;VMware Virtual disk SCSI Disk Device&#124;VMware Virtual disk SCSI Disk Device 1&#124;204797.37&#124;VMware Virtual disk SCSI Disk Device&#124;VMware Virtual disk SCSI Disk Device                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |C:&#124;53580132352&#124;4455071744&#124;0.08&#124;NTFS D:&#124;109887614976&#124;109790175232&#124;1.0&#124;NTFS E:&#124;104857595904&#124;104760311808&#124;1.0&#124;NTFS                  |1   |[00000007] Intel(R) PRO/1000 MT Network Connection&#124;00:0c:29:9a:59:73&#124;192.168.10.1&#124;192.168.10.62&#124;255.255.255.0                                                                                                                                                                                                                                                                                                                                                              |                 |                               |                     |
 
+### (Stable) Function 4: Collect Cloud Platform Product Prices
+
+#### Function Description
+
+After users input the authentication information (AK/SK), proceed with collecting the prices of cloud platform products in the public network. Once the collection is completed, store the product price information in the corresponding JSON file.
+
+Cloud Platform Support:
+* Huawei Cloud China Site: huawei_cn
+* Huawei Cloud International Site: huawei_intl
+
+
+Note:
+* Huawei Cloud resource collection OpenAPI interface supports up to 10 calls per second.
+
+
+```
+usage: prophet-cli price [-h] --cloud CLOUD --ak AK --sk SK --output-path
+                         OUTPUT_PATH
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --cloud CLOUD         Cloud platform acronyms
+  --ak AK               Cloud authentication access key id
+  --sk SK               Cloud authentication access key id
+  --output-path OUTPUT_PATH
+                        Generate report path
+
+```
+
+#### Example: Perform data collection.
+
+Collect the prices of products from Huawei Cloud International Site and store the JSON file as a zip archive in the /tmp directory.
+
+```
+prophet-cli price --cloud huawei_intl --ak xxx --sk yyy --output-path /tmp/
+```
+
+#### Collection Result Explanation
+
+Collection Directory Structure
+
+```
+huawei_intl/
+│
+├── regions/ -> Cloud Platform Pricing Information for Multiple Resource Pools
+│   ├── af-south-1.json -> Cloud Platform Product Pricing Information within Resource Pools
+│   └── cn-south-1.json
+│
+├── region.json -> Cloud Platform Resource Pool Information
+```
+
+Additionally, a "huawei_intl_xxxxxxx.zip" file (based on the input cloud platform abbreviation) will be generated in the output directory. This file is the final compressed file for analysis.
+
 ## How to Contribute
 
 TODO: Developer documentation to be completed
